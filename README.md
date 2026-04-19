@@ -4,7 +4,7 @@
 
 [](https://angular.io/)
 [](https://www.djangoproject.com/)
-[](https://www.postgresql.org/)
+[](https://www.sqlite.org/)
 [](https://opensource.org/licenses/MIT)
 
 -----
@@ -24,22 +24,19 @@
 
 ### **Frontend**
 
-  * **Framework:** Angular 17+ (TypeScript)
-  * **Styling:** Tailwind CSS / SCSS
-  * **State Management:** RxJS
-
+  * **Framework:** Angular (TypeScript)
 ### **Backend**
 
   * **Framework:** Django 5.0 & Django REST Framework (DRF)
   * **Authentication:** JWT (JSON Web Tokens)
-  * **Database:** PostgreSQL
+  * **Database:** SQLite
 
 -----
 
 ## 👥 The Development Team
 
-| Member | Role | GitHub |
-| :--- | :--- | :--- |
+| Member | GitHub |
+| :--- | :--- |
 | **Aliaidar Abilmansur** | [Abilmansur](https://github.com/comalonwizme) |
 | **Kalmurzaev Nurdaulet** | [Nurdaulet](https://github.com/NurdauletKalm) |
 | **Rakhmetov Aldiyar** | [Aldiyar](https://github.com/AldiyarRakhmetov) |

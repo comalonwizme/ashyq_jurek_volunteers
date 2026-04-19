@@ -1,0 +1,14 @@
+{
+    "NAV": {
+        "MAIN MENU": "Главная",
+        "PROJECTS": "Проекты",
+        "RATINGS": "Рейтинги",
+        "PROBLEMS": "О Проблеме",
+        "CONTACT": "Контакты"
+    },
+
+    "LOGIN": {
+        "REGISTER": "Регистрация",
+        "LOG_IN": "Войти"
+    }
+}

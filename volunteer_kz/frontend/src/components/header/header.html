@@ -1,0 +1,27 @@
+<header class="no_need_intro">
+    <div class="logo_tip">
+        V O L O N T E E R
+    </div>
+    <div class="menin_navbar">
+        <ul class="first_item_list">
+            @for(ok of main_navbar; track ok.name){
+                <li>
+                    <a class="nav_text" [routerLink]="ok.link">
+                        {{ok.name | transloco}}
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="log_reg_bar">
+        <ul class="first_reg_list">
+            @for(ok of login_bar; track ok.name){
+                <li>
+                    <a class="nav_text" [routerLink]="ok.link">
+                        {{ok.name | transloco}}
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</header>

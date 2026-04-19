@@ -1,0 +1,14 @@
+{
+    "NAV": {
+        "MAIN MENU": "Home",
+        "PROJECTS": "Projects",
+        "RATINGS": "Ratings",
+        "PROBLEMS": "Problems",
+        "CONTACT": "Contact"
+    },
+
+    "LOGIN": {
+        "REGISTER": "register",
+        "LOG_IN": "Login"
+    }
+}

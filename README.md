@@ -43,4 +43,4 @@
 
 -----
 
-\<p align="center"\>Made with ❤️ for the social development of Kazakhstan.\</p\>
+<p align="center">Made with ❤️ for the social development of Kazakhstan.</p\>

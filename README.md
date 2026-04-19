@@ -38,20 +38,11 @@
 
 ## 👥 The Development Team
 
-| Profile | Member | Role | GitHub |
-| :---: | :--- | :--- | :--- |
-| \<img src="[https://github.com/identicons/user1.png](https://github.com/identicons/user1.png)" width="45"\> | **Aliaidar Abilmansur** | Backend Architect / Lead | [Abilmansur](https://github.com/comalonwizme) |
-| \<img src="https://github.com/identicons/user2.png" width="45"\> | **Kalmurzaev Nurdaulet** | Frontend Developer / UI-UX | [Nurdaulet](https://github.com/NurdauletKalm) |
-| \<img src="[https://github.com/identicons/user3.png](https://github.com/identicons/user3.png)" width="45"\> | **Rakhmetov Aldiyar** | Fullstack Developer / DevOps | [Aldiyar](https://github.com/AldiyarRakhmetov) |
-
------
-
-## 🎯 Project Roadmap
-
-  - [ ] **Phase 1:** Secure JWT authentication with role-based access control (Volunteer vs. Organization).
-  - [ ] **Phase 2:** NGO verification module integrated with national business registries.
-  - [ ] **Phase 3:** Interactive Project Map (2GIS/Leaflet integration) for local discovery.
-  - [ ] **Phase 4:** Gamification engine (Badges, Leaderboards, and automated PDF certification).
+| Member | Role | GitHub |
+| :--- | :--- | :--- |
+| **Aliaidar Abilmansur** | [Abilmansur](https://github.com/comalonwizme) |
+| **Kalmurzaev Nurdaulet** | [Nurdaulet](https://github.com/NurdauletKalm) |
+| **Rakhmetov Aldiyar** | [Aldiyar](https://github.com/AldiyarRakhmetov) |
 
 -----
 

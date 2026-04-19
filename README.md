@@ -2,10 +2,11 @@
 
 > **A comprehensive digital ecosystem for volunteering in Kazakhstan. A professional dual-sided platform bridging the gap between NGOs and active citizens to solve social challenges systematically.**
 
-[](https://angular.io/)
-[](https://www.djangoproject.com/)
-[](https://www.sqlite.org/)
-[](https://opensource.org/licenses/MIT)
+[![Angular](https://img.shields.io/badge/Frontend-Angular%2017-red?logo=angular&style=flat-square)](https://angular.io/)
+[![Django](https://img.shields.io/badge/Backend-Django%205.0-green?logo=django&style=flat-square)](https://www.djangoproject.com/)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-blue?logo=postgresql&style=flat-square)](https://www.postgresql.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+
 
 -----
 

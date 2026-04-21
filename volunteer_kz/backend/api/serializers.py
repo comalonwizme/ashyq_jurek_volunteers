@@ -13,7 +13,7 @@ class RegisterSerializer(serializers.Serializer):
         validators = [validate_password]
         )
     
-    phone_number = serializers.CharField(max_length = 20)
+    # phone_number = serializers.CharField(max_length = 20)
 
     role = serializers.ChoiceField(
         choices=VolunteerProfile.ROLE_CHOICES,
@@ -30,10 +30,10 @@ class RegisterSerializer(serializers.Serializer):
             raise serializers.ValidationError("Уже существует пользователь с таким email!")
         return value
     
-    def validate_phone_number(self, value):
-        if VolunteerProfile.objects.filter(phone_number = value).exists():
-            raise serializers.ValidationError("Уже существует пользователь с таким номером телефона!")
-        return value
+    # def validate_phone_number(self, value):
+    #     if VolunteerProfile.objects.filter(phone_number = value).exists():
+    #         raise serializers.ValidationError("Уже существует пользователь с таким номером телефона!")
+    #     return value
     
     def create(self, validated_data):
         with transaction.atomic():
@@ -44,7 +44,6 @@ class RegisterSerializer(serializers.Serializer):
             )
             VolunteerProfile.objects.create(
                 user = user,
-                phone_number = validated_data["phone_number"],
                 role = validated_data["role"]
             )
         return user

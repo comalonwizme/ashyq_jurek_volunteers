@@ -4,7 +4,7 @@ import { Login } from '../components/login/login';
 import { Registration } from '../components/registration/registration';
 import { Projects } from '../components/projects/projects';
 import { Ratings } from '../components/ratings/ratings';
-import { Problems } from '../components/problems/problems';
+import { Contacts } from '../components/contacts/contacts';
 
 export const routes: Routes = [
     {path: '', redirectTo: "home", pathMatch: "full"},
@@ -13,5 +13,5 @@ export const routes: Routes = [
     {path: "register", component: Registration},
     {path: "projects", component: Projects},
     {path: 'ratings', component: Ratings},
-    {path: "problems", component: Problems}
+    {path: 'contact', component: Contacts}
 ];

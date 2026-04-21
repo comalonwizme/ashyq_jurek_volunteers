@@ -1,11 +1,12 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideTransloco, TranslocoLoader } from '@jsverse/transloco';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { routes } from './app.routes';
+import { authInterceptor } from '../interceptors/auth.interceptor';
 
 @Injectable({ providedIn: 'root' })
 export class TranslocoHttpLoader implements TranslocoLoader {
@@ -19,7 +20,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideTransloco({

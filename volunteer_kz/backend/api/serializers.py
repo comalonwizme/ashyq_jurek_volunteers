@@ -1,49 +1,87 @@
 from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
-from .models import VolunteerProfile
 from django.contrib.auth.models import User
 from django.db import transaction
+from .models import VolunteerProfile, Project, ProjectApplication, Contact
+
 
 class RegisterSerializer(serializers.Serializer):
-    username = serializers.CharField(max_length = 150)
+    username = serializers.CharField(max_length=150)
     email = serializers.EmailField()
     password = serializers.CharField(
-        min_length = 6, 
-        write_only=True, 
-        validators = [validate_password]
-        )
-    
-    # phone_number = serializers.CharField(max_length = 20)
-
+        min_length=6,
+        write_only=True,
+        validators=[validate_password]
+    )
     role = serializers.ChoiceField(
         choices=VolunteerProfile.ROLE_CHOICES,
-        default = "volunteer"
+        default="volunteer"
     )
 
     def validate_username(self, value):
-        if User.objects.filter(username = value).exists():
+        if User.objects.filter(username=value).exists():
             raise serializers.ValidationError("Уже существует пользователь с таким username!")
         return value
 
     def validate_email(self, value):
-        if User.objects.filter(email = value).exists():
+        if User.objects.filter(email=value).exists():
             raise serializers.ValidationError("Уже существует пользователь с таким email!")
         return value
-    
-    # def validate_phone_number(self, value):
-    #     if VolunteerProfile.objects.filter(phone_number = value).exists():
-    #         raise serializers.ValidationError("Уже существует пользователь с таким номером телефона!")
-    #     return value
-    
+
     def create(self, validated_data):
         with transaction.atomic():
             user = User.objects.create_user(
-                username = validated_data['username'],
-                email =  validated_data['email'],
-                password = validated_data['password']
+                username=validated_data['username'],
+                email=validated_data['email'],
+                password=validated_data['password']
             )
             VolunteerProfile.objects.create(
-                user = user,
-                role = validated_data["role"]
+                user=user,
+                role=validated_data['role']
             )
         return user
+
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)
+
+
+class ProjectSerializer(serializers.ModelSerializer):
+    category_name = serializers.CharField(source='category.name', read_only=True)
+    applications_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Project
+        fields = [
+            'id', 'title', 'description', 'address',
+            'start_date', 'end_date', 'hours_count', 'volunteers_needed',
+            'status', 'category', 'category_name', 'applications_count', 'created_at'
+        ]
+        read_only_fields = ['id', 'created_at']
+
+    def get_applications_count(self, obj):
+        return obj.applications.count()
+
+
+class ProjectApplicationSerializer(serializers.ModelSerializer):
+    volunteer_username = serializers.CharField(source='volunteer.user.username', read_only=True)
+    project_title = serializers.CharField(source='project.title', read_only=True)
+
+    class Meta:
+        model = ProjectApplication
+        fields = [
+            'id', 'project', 'project_title', 'cover_letter',
+            'status', 'volunteer', 'volunteer_username', 'applied_at'
+        ]
+        read_only_fields = [
+            'id', 'status', 'volunteer', 'volunteer_username',
+            'applied_at', 'project', 'project_title'
+        ]
+
+
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ['id', 'name', 'email', 'topic', 'message']
+        read_only_fields = ['id']

@@ -1,1 +1,67 @@
-<p>projects works!</p>
+<section class="projects-section" id="projects">
+
+  <div class="projects-header">
+    <div class="projects-header-left">
+      <h2>Өзекті жобалар</h2>
+      <p>Қазіргі уақытта сіздің көмегіңіз қажет жобалар</p>
+    </div>
+    <div class="projects-controls">
+      <select [(ngModel)]="filterStatus" class="filter-select">
+        <option value="">Барлығы</option>
+        <option value="open">Ашық</option>
+        <option value="in_progress">Үдерісте</option>
+        <option value="completed">Аяқталған</option>
+        <option value="cancelled">Болдырылмады</option>
+      </select>
+      <button (click)="loadProjects()" class="refresh-btn">↺ Жаңарту</button>
+    </div>
+  </div>
+
+  @if (isLoading) {
+    <div class="state-message">Жүктелуде...</div>
+  }
+
+  @if (errorMessage) {
+    <div class="state-message error-state">{{ errorMessage }}</div>
+  }
+
+  @if (!isLoading && !errorMessage && filteredProjects.length === 0) {
+    <div class="state-message">Жобалар табылмады</div>
+  }
+
+  <div class="projects-grid">
+    @for (project of filteredProjects; track project.id) {
+      <div class="project-card">
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">{{ project.category_name || 'Жалпы' }}</span>
+            <span class="card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              {{ project.address }}
+            </span>
+          </div>
+          <div class="card-title">{{ project.title }}</div>
+          <div class="card-desc">{{ project.description }}</div>
+          <div class="card-footer">
+            <span class="card-badge status-{{ project.status }}">
+              {{ statusLabel(project.status) }}
+            </span>
+            <span class="card-slots">
+              {{ project.applications_count }}/{{ project.volunteers_needed }} орын
+            </span>
+          </div>
+          @if (authService.isLogged()) {
+            <button (click)="applyToProject(project.id)" class="apply-btn">
+              Қосылу
+            </button>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+</section>

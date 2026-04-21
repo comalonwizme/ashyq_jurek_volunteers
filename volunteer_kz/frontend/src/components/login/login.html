@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="auth-card">
+    <h2>Kіру</h2>
+    <form class="auth-form">
+        <div class="input-group">
+            <label for="username">Пайдаланушы атыңыз</label>
+            <input name="username" [(ngModel)]="form.username" id="username" placeholder="Пайдаланушы атың енгізіңіз">
+        </div>
+        <div class="input-group">
+            <label>Құпия сөз</label>
+            <input name="password" [(ngModel)]="form.password" type="password" id="password" placeholder="••••••••">
+        </div>
+
+        <button (click)="login()" [disabled]="is_load" type="button" class="submit-btn">Kіру</button>
+
+        @if (errorMessage) {
+          <div class="auth-error">{{ errorMessage }}</div>
+        }
+    </form>
+</div>

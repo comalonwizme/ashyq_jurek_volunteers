@@ -37,7 +37,7 @@ export class Registration {
       },
       error: (err) => {
         console.log("Error response:", err.error);
-        this.errorMessage = "Error",
+        this.errorMessage = err.error?.username?.[0] || err.error?.email?.[0] || 'Тіркелу қатесі',
         this.is_load = false
       }
     })

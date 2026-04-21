@@ -17,5 +17,9 @@
         </div>
 
         <button type="button" (click)="register()" [disabled]="is_load" class="submit-btn">Тіркелу</button>
+
+        @if (errorMessage) {
+          <div class="auth-error">{{ errorMessage }}</div>
+        }
     </form>
 </div>

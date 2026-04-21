@@ -75,7 +75,7 @@ class Project(models.Model):
     active = ActiveProjectManager()
 
     def __str__(self):
-        return f"{self.title} | {self.team.name} | {self.status}"
+        return f"{self.title} | {self.status}"
     
 
 class ProjectApplication(models.Model):
@@ -112,3 +112,13 @@ class ProjectApplication(models.Model):
 
     def __str__(self):
         return f"{self.volunteer.user.username} → {self.project.title} | {self.status}"
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    topic = models.CharField(max_length=50)
+    message = models.TextField()
+
+    def __str__(self):
+        return f"from {self.name} ({self.email}); topic - {self.topic}; message: {self.message}"

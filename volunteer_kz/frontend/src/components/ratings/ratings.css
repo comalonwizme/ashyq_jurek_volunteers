@@ -1,0 +1,239 @@
+    .leaderboard-section {
+      background: #f7f9f8;
+      padding: 64px 56px 72px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .leaderboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 880px;
+      margin: 0 auto 32px;
+    }
+
+    .leaderboard-header h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      color: #1a2e28;
+    }
+
+    .city-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237a9490' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;
+      border: 1.5px solid #dde8e6;
+      border-radius: 10px;
+      padding: 10px 40px 10px 16px;
+      font-family: 'Golos Text', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #3a5450;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+      min-width: 160px;
+    }
+
+.podium {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      max-width: 880px;
+      margin: 0 auto 24px;
+      align-items: end;
+    }
+
+    .podium-card {
+      border-radius: 20px;
+      padding: 28px 22px 26px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+
+    .podium-card:hover { transform: translateY(-3px); }
+
+    .podium-card.rank-2 {
+      background: #fff;
+      border: 1.5px solid #e2ede9;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      order: -1;
+    }
+
+    .podium-card.rank-1 {
+      background: #fffbea;
+      border: 1.5px solid #f5e6a0;
+      box-shadow: 0 4px 20px rgba(245,166,35,0.18);
+    }
+
+    .podium-card.rank-3 {
+      background: #fff8f0;
+      border: 1.5px solid #f5dbb8;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #b2e0d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0a5e4c;
+      margin: 0 auto 6px;
+      position: relative;
+    }
+
+    .rank-badge {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+
+    .rank-badge.gold   { background: #f5a623; }
+    .rank-badge.silver { background: #8eaaa6; }
+    .rank-badge.bronze { background: #c8834a; }
+
+    .podium-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #1a2e28;
+      margin: 10px 0 4px;
+    }
+
+    .podium-city {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      color: #7a9490;
+      margin-bottom: 14px;
+    }
+
+    .podium-city svg { width: 12px; height: 12px; }
+
+    .podium-hours {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: #0e8a6e;
+      line-height: 1;
+    }
+
+    .podium-card.rank-1 .podium-hours { color: #e8950f; }
+    .podium-card.rank-3 .podium-hours { color: #c8834a; }
+
+    .podium-label {
+      font-size: 0.78rem;
+      color: #7a9490;
+      margin-top: 2px;
+    }
+
+    /* list */
+    .leaderboard-list {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+
+    .lb-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0f4f3;
+      transition: background 0.15s;
+    }
+
+    .lb-row:last-child { border-bottom: none; }
+    .lb-row:hover { background: #f7faf9; }
+
+    .lb-rank {
+      width: 28px;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #7a9490;
+      flex-shrink: 0;
+    }
+
+    .lb-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: #b2e0d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      color: #0a5e4c;
+      flex-shrink: 0;
+    }
+
+    .lb-info { flex: 1; }
+
+    .lb-name {
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: #1a2e28;
+      margin-bottom: 2px;
+    }
+
+    .lb-city {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.76rem;
+      color: #7a9490;
+    }
+
+    .lb-city svg { width: 11px; height: 11px; }
+
+    .lb-stats { text-align: right; }
+
+    .lb-hours {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0e8a6e;
+      justify-content: flex-end;
+      margin-bottom: 2px;
+    }
+
+    .lb-hours svg { width: 13px; height: 13px; color: #7a9490; }
+
+.lb-state {
+  text-align: center;
+  padding: 40px;
+  font-size: 1rem;
+  color: #7a9490;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.lb-error { color: #c0392b; }

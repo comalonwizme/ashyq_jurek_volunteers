@@ -1,1 +1,86 @@
-<p>ratings works!</p>
+<section class="leaderboard-section" id="rating">
+
+  <div class="leaderboard-header">
+    <h2>Үздіктер тізімі</h2>
+  </div>
+
+  @if (isLoading) {
+    <div class="lb-state">Жүктелуде...</div>
+  }
+
+  @if (errorMessage) {
+    <div class="lb-state lb-error">{{ errorMessage }}</div>
+  }
+
+  @if (!isLoading && ratings.length === 0 && !errorMessage) {
+    <div class="lb-state">Рейтинг деректері жоқ</div>
+  }
+
+  @if (!isLoading && ratings.length > 0) {
+
+    <!-- TOP 3 PODIUM -->
+    <div class="podium">
+
+      @if (ratings.length >= 2) {
+        <div class="podium-card rank-2">
+          <div class="avatar">
+            {{ ratings[1].initials }}
+            <span class="rank-badge silver">2</span>
+          </div>
+          <div class="podium-name">{{ ratings[1].username }}</div>
+          <div class="podium-hours">{{ ratings[1].totalHour }}</div>
+          <div class="podium-label">сағат</div>
+        </div>
+      }
+
+      <div class="podium-card rank-1">
+        <div class="avatar" style="width:72px;height:72px;font-size:1.1rem;background:#a8d8d0;">
+          {{ ratings[0].initials }}
+          <span class="rank-badge gold">1</span>
+        </div>
+        <div class="podium-name">{{ ratings[0].username }}</div>
+        <div class="podium-hours">{{ ratings[0].totalHour }}</div>
+        <div class="podium-label">сағат</div>
+      </div>
+
+      @if (ratings.length >= 3) {
+        <div class="podium-card rank-3">
+          <div class="avatar" style="background:#c8dfd9;">
+            {{ ratings[2].initials }}
+            <span class="rank-badge bronze">3</span>
+          </div>
+          <div class="podium-name">{{ ratings[2].username }}</div>
+          <div class="podium-hours">{{ ratings[2].totalHour }}</div>
+          <div class="podium-label">сағат</div>
+        </div>
+      }
+
+    </div>
+
+    <!-- LIST 4+ -->
+    @if (restRatings.length > 0) {
+      <div class="leaderboard-list">
+        @for (entry of restRatings; track entry.rank) {
+          <div class="lb-row">
+            <span class="lb-rank">{{ entry.rank }}</span>
+            <div class="lb-avatar">{{ entry.initials }}</div>
+            <div class="lb-info">
+              <div class="lb-name">{{ entry.username }}</div>
+            </div>
+            <div class="lb-stats">
+              <div class="lb-hours">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                {{ entry.totalHour }} сағ
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+  }
+
+</section>

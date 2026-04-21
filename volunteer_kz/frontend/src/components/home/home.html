@@ -1,24 +1,182 @@
 <section class="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
 
-    <h1 class="hero-title">
-      <span style="color: aliceblue;"> Сенің үлесің </span> 
-      <span style="color: orange">Қазақстанның</span>
-      <span style="color: bisque;">болашағы</span>
-    </h1>
+  <h1 class="hero-title">
+    <span style="color: aliceblue;"> Сенің үлесің </span> 
+    <span style="color: orange">Қазақстанның</span>
+    <span style="color: bisque;">болашағы</span>
+  </h1>
 
-    <p class="hero-sub" style="color: blanchedalmond;">
-      Eліміздің еріктілері мен үкіметтік емес ұйымдарын біріктіреді. Жүрегіңе жақын істі тауып, мейірімді істердің бір бөлігі бол.
-    </p>
+  <p class="hero-sub" style="color: blanchedalmond;">
+    Eліміздің еріктілері мен үкіметтік емес ұйымдарын біріктіреді. Жүрегіңе жақын істі тауып, мейірімді істердің бір бөлігі бол.
+  </p>
 
-    <div class="hero-cta">
-      <button class="btn-primary">
-        Жобаға қосылу
-        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
+  <div class="hero-cta">
+    <button (click)="navigate()" class="btn-primary">
+      Жобаға қосылу
+      <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+    <button class="btn-outline">Ұйымдар үшін</button>
+  </div>
+</section>
+
+
+  <section class="projects-section" id="projects">
+    <div class="projects-header">
+      <div class="projects-header-left">
+        <h2>Өзекті жобалар</h2>
+        <p>Қазіргі уақытта сіздің көмегіңіз қажет жобалар</p>
+      </div>
+      <a href="#" class="all-projects-link">
+        Барлық жобалар
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
         </svg>
-      </button>
-      <button class="btn-outline">Ұйымдар үшін</button>
+      </a>
     </div>
-  </section>
+
+    <div class="projects-grid">
+
+      <!-- Card 1 -->
+      <a href="project-detail.html?id=1" class="project-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Субботник" />
+          <span class="card-badge">Активный</span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Экология</span>
+            <span class="card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Алматы
+            </span>
+          </div>
+          <div class="card-title">Субботник в парке Алтай</div>
+          <div class="card-desc">Масштабная уборка городского парка: сбор мусора, посадка деревьев, обустройство...</div>
+          <div class="card-footer">
+            <span class="card-org">Фонд «Зелёная Земля»</span>
+            <span class="card-slots">32/50 мест</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <!-- <div class="project-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Репетиторство" />
+          <span class="card-badge">Активный</span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Образование</span>
+            <span class="card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Астана
+            </span>
+          </div>
+          <div class="card-title">Репетиторство для школьников</div>
+          <div class="card-desc">Помощь детям из малообеспеченных семей в подготовке к ЕНТ по математике и физике. Занят...</div>
+          <div class="card-footer">
+            <span class="card-org">НПО «Жасыл Ел»</span>
+            <span class="card-slots">8/15 мест</span>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Card 3 -->
+      <!-- <div class="project-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Пожилые люди" />
+          <span class="card-badge">Активный</span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Социальная помощь</span>
+            <span class="card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Шымкент
+            </span>
+          </div>
+          <div class="card-title">Забота о пожилых людях</div>
+          <div class="card-desc">Помощь одиноким пенсионерам: покупка продуктов, помощь по дому, общение. Простая...</div>
+          <div class="card-footer">
+            <span class="card-org">Центр помощи детям</span>
+            <span class="card-slots">12/20 мест</span>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Card 4 -->
+      <!-- <div class="project-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?w=600&q=80" alt="Животные" />
+          <span class="card-badge">Активный</span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Животные</span>
+            <span class="card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Алматы
+            </span>
+          </div>
+          <div class="card-title">Помощь приюту для животных</div>
+          <div class="card-desc">Уход за бездомными животными: кормление, прогулки, социализация питомцев перед...</div>
+          <div class="card-footer">
+            <span class="card-org">Приют «Добрые руки»</span>
+            <span class="card-slots">5/10 мест</span>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Card 5 -->
+      <!-- <div class="project-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Медицина" />
+          <span class="card-badge">Активный</span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Здоровье</span>
+            <span class="card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Астана
+            </span>
+          </div>
+          <div class="card-title">Донорство крови</div>
+          <div class="card-desc">Акция по сдаче крови для детской больницы. Каждый донор спасает жизнь ребёнка...</div>
+          <div class="card-footer">
+            <span class="card-org">Фонд «Жизнь»</span>
+            <span class="card-slots">20/40 мест</span>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Card 6 -->
+      <!-- <div class="project-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Молодёжь" />
+          <span class="card-badge">Активный</span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">Молодёжь</span>
+            <span class="card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Алматы
+            </span>
+          </div>
+          <div class="card-title">Летний лагерь для подростков</div>
+          <div class="card-desc">Организация досуга для детей из неблагополучных семей: спорт, творчество, походы...</div>
+          <div class="card-footer">
+            <span class="card-org">НПО «Болашак»</span>
+            <span class="card-slots">3/8 мест</span>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+</section>

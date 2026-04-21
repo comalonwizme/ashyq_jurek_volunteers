@@ -66,6 +66,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     category_name = serializers.CharField(source='category.name', read_only=True)
+    coordinator_username = serializers.CharField(source='coordinator.user.username', read_only=True)
     applications_count = serializers.SerializerMethodField()
 
     class Meta:
@@ -73,9 +74,10 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'description', 'address',
             'start_date', 'end_date', 'hours_count', 'volunteers_needed',
-            'status', 'category', 'category_name', 'applications_count', 'created_at'
+            'status', 'category', 'category_name', 'coordinator', 'coordinator_username',
+            'applications_count', 'created_at'
         ]
-        read_only_fields = ['id', 'created_at']
+        read_only_fields = ['id', 'coordinator', 'coordinator_username', 'created_at']
         extra_kwargs = {
             'category': {'required': False, 'allow_null': True},
         }

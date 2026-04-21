@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+
+
 class VolunteerProfile(models.Model):
     ROLE_CHOICES = [
         ("volunteer", "Volunteer"),
@@ -7,28 +9,26 @@ class VolunteerProfile(models.Model):
     ]
 
     user = models.OneToOneField(
-        User, 
+        User,
         on_delete=models.CASCADE,
         related_name="volunteer_profile"
     )
 
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default="volunteer")
-    # phone_number = models.CharField(max_length=20, null=True, blank=True)
     profile_image = models.ImageField(upload_to="profiles/", null=True, blank=True)
     is_active = models.BooleanField(default=True)
     bio = models.TextField(null=True, blank=True)
-
     created_at = models.DateTimeField(auto_now_add=True)
-    
     totalHour = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.user.username} - {self.role}"
-    
+
 
 class ActiveProjectManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status="open")
+
     def by_category(self, category_id):
         return self.get_queryset().filter(category_id=category_id)
 
@@ -40,7 +40,7 @@ class ProjectCategory(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 
 class Project(models.Model):
     STATUS_CHOICES = [
@@ -50,10 +50,28 @@ class Project(models.Model):
         ("cancelled", "Отменён"),
     ]
 
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="created_projects"
+    )
+
+    coordinator = models.ForeignKey(
+        VolunteerProfile,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="managed_projects",
+        limit_choices_to={"role": "coordinator"}
+    )
+
     category = models.ForeignKey(
         ProjectCategory,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name="projects"
     )
 
@@ -76,8 +94,6 @@ class Project(models.Model):
 
     def __str__(self):
         return f"{self.title} | {self.status}"
-    
-
 
 
 class ProjectApplication(models.Model):

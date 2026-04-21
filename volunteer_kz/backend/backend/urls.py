@@ -12,4 +12,5 @@ urlpatterns = [
     path("projects/<int:pk>/apply/", views.apply_to_project),
     path("ratings/", views.ratings_view),
     path("contact/", views.ContactAPIView.as_view()),
+    path("contact/<int:pk>/", views.ContactAPIView.as_view()),
 ]

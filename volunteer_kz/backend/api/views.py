@@ -58,7 +58,7 @@ def login_view(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def logout_view(request):
     try:
         token = RefreshToken(request.data.get('refresh'))
@@ -147,6 +147,8 @@ class ProjectDetailView(APIView):
         return Response(ProjectSerializer(project).data)
 
     def put(self, request, pk):
+        if not request.user.is_authenticated:
+            return Response({'error': 'Аутентификация қажет'}, status=status.HTTP_401_UNAUTHORIZED)
         project = self.get_object(pk)
         if not project:
             return Response({'error': 'Жоба табылмады'}, status=status.HTTP_404_NOT_FOUND)
@@ -157,6 +159,8 @@ class ProjectDetailView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
+        if not request.user.is_authenticated:
+            return Response({'error': 'Аутентификация қажет'}, status=status.HTTP_401_UNAUTHORIZED)
         project = self.get_object(pk)
         if not project:
             return Response({'error': 'Жоба табылмады'}, status=status.HTTP_404_NOT_FOUND)
@@ -178,7 +182,7 @@ class ContactAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def put(self, request, pk):
-        contact = Contact.objects.get(pk=pk)
+        contact = get_object_or_404(Contact, pk=pk)
         serializer = ContactSerializer(contact, data=request.data)
         if serializer.is_valid():
             serializer.save()

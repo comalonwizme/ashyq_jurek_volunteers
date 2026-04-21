@@ -64,6 +64,26 @@ class ProjectSerializer(serializers.ModelSerializer):
         return obj.applications.count()
 
 
+class ProjectSerializer(serializers.ModelSerializer):
+    category_name = serializers.CharField(source='category.name', read_only=True)
+    applications_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Project
+        fields = [
+            'id', 'title', 'description', 'address',
+            'start_date', 'end_date', 'hours_count', 'volunteers_needed',
+            'status', 'category', 'category_name', 'applications_count', 'created_at'
+        ]
+        read_only_fields = ['id', 'created_at']
+        extra_kwargs = {
+            'category': {'required': False, 'allow_null': True},
+        }
+
+    def get_applications_count(self, obj):
+        return obj.applications.count()
+
+
 class ProjectApplicationSerializer(serializers.ModelSerializer):
     volunteer_username = serializers.CharField(source='volunteer.user.username', read_only=True)
     project_title = serializers.CharField(source='project.title', read_only=True)
@@ -78,7 +98,6 @@ class ProjectApplicationSerializer(serializers.ModelSerializer):
             'id', 'status', 'volunteer', 'volunteer_username',
             'applied_at', 'project', 'project_title'
         ]
-
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:

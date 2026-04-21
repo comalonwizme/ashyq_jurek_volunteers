@@ -78,6 +78,8 @@ class Project(models.Model):
         return f"{self.title} | {self.status}"
     
 
+
+
 class ProjectApplication(models.Model):
     STATUS_CHOICES = [
         ("pending", "На рассмотрении"),

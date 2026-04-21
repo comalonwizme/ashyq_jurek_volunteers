@@ -1,3 +1,21 @@
-<main class="registration_class">
-    
-</main>
+<div class="auth-card">
+    <h2>Тіркелу</h2>
+    <form class="auth-form">
+        <div class="input-group">
+            <label for="username">Пайдаланушы атыңыз</label>
+            <input name="username" [(ngModel)]="form.username" id="username" placeholder="Пайдаланушы атың енгізіңіз">
+        </div>
+
+        <div class="input-group">
+            <label for="phone">Электорнды пошта</label>
+            <input name="email" [(ngModel)]="form.email" type="email" id="phone" placeholder="e-mail">
+        </div>
+
+        <div class="input-group">
+            <label>Құпия сөз</label>
+            <input name="password" [(ngModel)]="form.password" type="password" id="password" placeholder="••••••••">
+        </div>
+
+        <button type="button" (click)="register()" [disabled]="is_load" class="submit-btn">Тіркелу</button>
+    </form>
+</div>

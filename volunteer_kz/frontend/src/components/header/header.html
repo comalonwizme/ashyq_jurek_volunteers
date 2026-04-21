@@ -16,15 +16,24 @@
             }
         </ul>
     </div>
-    <div class="log_reg_bar">
-        <ul class="first_reg_list">
-            @for(ok of login_bar; track ok.name){
-                <li>
-                    <a class="nav_text" [routerLink]="ok.link">
-                        {{ok.name | transloco}}
-                    </a>
-                </li>
-            }
-        </ul>
-    </div>
+    @if(!checker()){
+        <div class="log_reg_bar">
+            <ul class="first_reg_list">
+                @for(ok of login_bar; track ok.name){
+                    <li>
+                        <a class="nav_text" [routerLink]="ok.link">
+                            {{ok.name | transloco}}
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    @else{
+        <div class="logout_helper">
+            <button (click)="log_out()">
+                Шығу
+            </button>
+        </div>
+    }
 </header>
